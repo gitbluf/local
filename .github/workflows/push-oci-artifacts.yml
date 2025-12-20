@@ -8,6 +8,8 @@ on:
 jobs:
   push-artifacts:
     runs-on: ubuntu-latest
+    permissions:
+      packages: write  # needed for ghcr.io access
     steps:
       - uses: actions/checkout@v4
 
