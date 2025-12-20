@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Script to parse and validate version from oc-v* tags for LLM release artifacts
+# Usage: ./scripts/llm-release <tag>
+# Example: ./scripts/llm-release oc-v0.1.0-rc.0
+# Outputs: v0.1.0-rc.0 (if valid)
+
+set -e
+
+if [ $# -ne 1 ]; then
+    echo "Error: Exactly one argument required (the tag name)"
+    echo "Usage: $0 <tag>"
+    exit 1
+fi
+
+TAG="$1"
+
+# Check if tag starts with oc-
+if [[ ! "$TAG" =~ ^oc- ]]; then
+    echo "Error: Tag must start with 'oc-'"
+    exit 1
+fi
+
+# Strip 'oc-' prefix
+VERSION=$(echo "$TAG" | sed 's/^oc-//')
+
+# Validate semantic version pattern (simple check)
+SEMVER_REGEX='^v[0-9]+\.[0-9]+\.[0-9]+(-[a-zA-Z0-9.-]+)?(\+[a-zA-Z0-9.-]+)?$'
+
+if [[ ! "$VERSION" =~ $SEMVER_REGEX ]]; then
+    echo "Error: Tag $TAG does not contain valid semantic version after stripping 'oc-' prefix"
+    echo "Expected format: oc-vX.Y.Z[-prerelease][+build]"
+    echo "Examples: oc-v1.2.3, oc-v0.1.0-rc.0, oc-v2.0.0-beta+build123"
+    exit 1
+fi
+
+# Output the parsed version
+echo "$VERSION"
