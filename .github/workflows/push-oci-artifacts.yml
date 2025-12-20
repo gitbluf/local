@@ -28,8 +28,8 @@ jobs:
 
       - name: Push Agent Artifact
         run: |
-          flux push artifact oci://ghcr.io/${{ github.repository }}/oc-agent:${{ steps.parse_version.outputs.parsed_version }} --path=llm/agent --source=.
+          flux push artifact oci://ghcr.io/${{ github.repository }}/oc-agent:${{ steps.parse_version.outputs.parsed_version }} --path=llm/agent --source=. --revision=${{ steps.parse_version.outputs.parsed_version }}
 
       - name: Push Command Artifact
         run: |
-          flux push artifact oci://ghcr.io/${{ github.repository }}/oc-command:${{ steps.parse_version.outputs.parsed_version }} --path=llm/command --source=.
+          flux push artifact oci://ghcr.io/${{ github.repository }}/oc-command:${{ steps.parse_version.outputs.parsed_version }} --path=llm/command --source=. --revision=${{ steps.parse_version.outputs.parsed_version }}
