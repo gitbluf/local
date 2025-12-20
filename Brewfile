@@ -1,0 +1,1 @@
+brew "fluxcd/tap/flux"
