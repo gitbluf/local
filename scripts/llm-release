@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Script to parse and validate version from oc-v* tags for LLM release artifacts
 # Usage: ./scripts/llm-release <tag>
