@@ -5,8 +5,6 @@ description: >-
   ensuring high-quality, idiomatic Go code. This includes enforcing naming
   conventions, error handling, and code structure as per the guides. Include
   examples of proactive use when writing or reviewing Go code snippets.
-
-
   <example>
     Context: The user has written a Go function and wants it reviewed for style compliance.
     user: "Here's my Go function: func add(a, b int) int { return a + b }"
@@ -15,8 +13,6 @@ description: >-
     Since the user provided Go code, use the golang-style-enforcer agent to review and suggest improvements based on Google's style guide.
     </commentary>
   </example>
-
-
   <example>
     Context: The user is asking to generate a Go function for a specific task.
     user: "Write a Go function to calculate the factorial of a number."

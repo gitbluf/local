@@ -1,5 +1,7 @@
 ---
 description: Remove AI code slop
+model: opencode/grok-code
+agent: build
 ---
 
 Check the diff against main, and remove all AI generated slop introduced in this branch.

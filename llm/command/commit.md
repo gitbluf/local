@@ -1,5 +1,7 @@
 ---
 description: git commit and push
+agent: git-commiter
+model: opencode/grok-code
 subtask: true
 ---
 
