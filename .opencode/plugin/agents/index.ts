@@ -4,6 +4,7 @@ import { cortexDefinition } from "./cortex"
 import { blueprintDefinition } from "./blueprint"
 import { blackiceDefinition } from "./blackice"
 import { execDefinition } from "./exec"
+import { dataweaverDefinition } from "./dataweaver"
 import { discoverSkills } from "../skills/discovery"
 import { createBuiltinSkills } from "../builtin-skills"
 
@@ -12,6 +13,7 @@ export type BuiltinAgentName =
   | "blueprint"
   | "blackice"
   | "exec"
+  | "dataweaver"
 
 /**
  * Array of all built-in agent definitions.
@@ -22,6 +24,7 @@ export const builtinAgentDefinitions: BuiltinAgentDefinition[] = [
   blueprintDefinition,
   blackiceDefinition,
   execDefinition,
+  dataweaverDefinition,
 ]
 
 /**

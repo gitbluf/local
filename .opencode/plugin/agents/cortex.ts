@@ -17,20 +17,16 @@ function buildCortexAvailableAgentsSection(
 ): string {
   if (!availableAgents.length) {
     return `## Available Agents
-
-No additional agents were discovered. Use built-in agents like @build, @plan, @blueprint, and @explore when appropriate.
-
+        Use built-in agents like @blueprint, and @explore when appropriate.
 `
   }
 
   const lines: string[] = []
 
   lines.push("## Available Agents")
-  lines.push("")
   lines.push(
-    "Use this section to decide which subagent(s) to delegate to based on their description and mode.",
+    "Use this section to decide which subagent(s) to delegate to based on their description and mode.\n",
   )
-  lines.push("")
   lines.push("| Agent | Mode | When to use |")
   lines.push("|-------|------|-------------|")
 
@@ -42,11 +38,9 @@ No additional agents were discovered. Use built-in agents like @build, @plan, @b
     )
   }
 
-  lines.push("")
   lines.push(
-    "Prefer delegating to a specialized agent when its description clearly matches the user's request.",
+    "Prefer delegating to a specialized agent when its description clearly matches the user's request.\n",
   )
-  lines.push("")
 
   return lines.join("\n")
 }
@@ -60,9 +54,7 @@ function buildCortexSkillsSection(
 
   const lines: string[] = []
   lines.push("## Available Skills")
-  lines.push("")
-  lines.push("Use these skills via the native `skill` tool before manual work when they match the user's request.")
-  lines.push("")
+  lines.push("Use these skills via the native `skill` tool before manual work when they match the user's request.\n")
   lines.push("| Skill | Description | Location |")
   lines.push("|--------|-------------|----------|")
 
@@ -71,7 +63,6 @@ function buildCortexSkillsSection(
     lines.push(`| ${skill.name} | ${desc} | ${skill.location} |`)
   }
 
-  lines.push("")
   return lines.join("\n")
 }
 
@@ -354,7 +345,7 @@ If specific file path is already known. Pass it.
 /* -------------------------------------------------------------------------- */
 
 export function createCortexOrchestratorAgent(
-  model: string = "anthropic/claude-3-5-sonnet-20241022",
+  model: string = "anthropic/claude-4-5-sonnet-20241022",
   availableAgents: CortexAvailableAgent[] = [],
   skills: import("../skills/discovery").SkillInfo[] = [],
 ): AgentConfig {
