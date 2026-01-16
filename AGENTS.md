@@ -1,6 +1,14 @@
 # Agent Guidelines
 
-This repository holds subagents and commands for opencode. Use `opencode create agent` to create new agents, then run `scripts/sync-agents` to sync them to the llm/agent path.
+This repository contains OpenCode subagents and commands. Agents are specialized AI assistants, and commands are reusable prompts invoked via slash commands.
+
+## Repository Overview
+
+This is a configuration repository with no traditional build/test/lint commands. The primary workflows involve:
+- Creating and syncing agent definitions
+- Creating command definitions
+- Validating and releasing via OCI artifacts
+- Using git for version control
 
 ## Folder Structure
 ```
@@ -10,12 +18,14 @@ This repository holds subagents and commands for opencode. Use `opencode create 
 ├── .opencode/
 │   ├── agent/          # Temporary location for new agents (before sync)
 │   └── command/        # Command templates
-└── scripts/
-    ├── sync-agents     # Script to move agents from .opencode/agent/ to llm/agent/
-    └── llm-release     # Script to parse and validate version from oc-v* tags
+├── scripts/
+│   ├── sync-agents     # Moves agents from .opencode/agent/ to llm/agent/
+│   └── llm-release     # Parses and validates version from oc-v* tags
+└── .github/workflows/
+    └── push-oci-artifacts.yml  # CI/CD for publishing artifacts
 ```
 
-## Commands
+## Common Commands
 
 ### Sync Agents
 After creating a new agent using `opencode create agent`, run:
