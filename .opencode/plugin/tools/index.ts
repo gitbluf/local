@@ -114,55 +114,28 @@ export function createPlatformInfoTool(client: any, directory: string) {
 
       const skills = await discoverSkills(directory)
 
-      const summaryLines: string[] = []
+      const summary = `# OpenCode Platform Overview
 
-      summaryLines.push("# OpenCode Platform Overview")
-      summaryLines.push("")
-      summaryLines.push("## Agents")
-      summaryLines.push(
-        `- Detected ${agentCount} agents via client.app.agents()`,
-      )
-      summaryLines.push(
-        "- Define agents in `AGENTS.md` or Markdown files under `.opencode/agent/` or `~/.config/opencode/agent/`.",
-      )
-      summaryLines.push("")
-      summaryLines.push("## Skills")
-      summaryLines.push(
-        `- Detected ${skills.length} skills across project and global locations.`,
-      )
-      summaryLines.push(
-        "- Project skills: `.opencode/skill/<name>/SKILL.md`",
-      )
-      summaryLines.push(
-        "- Project (Claude-compatible) skills: `.claude/skills/<name>/SKILL.md`",
-      )
-      summaryLines.push(
-        "- Global skills: `~/.config/opencode/skill/<name>/SKILL.md`",
-      )
-      summaryLines.push(
-        "- Global (Claude-compatible) skills: `~/.claude/skills/<name>/SKILL.md`",
-      )
-      summaryLines.push("")
-      summaryLines.push("## Tools")
-      summaryLines.push(
-        "- Custom tools can be defined in `.opencode/tool/*.ts` or provided by plugins.",
-      )
-      summaryLines.push(
-        "- This plugin adds tools: `platform_agents`, `platform_skills`, `platform_info`, `platform_createAgent`, and `platform_cortexAgent`.",
-      )
-      summaryLines.push("")
-      summaryLines.push("## KERNEL-92//CORTEX Orchestrator Agent")
-      summaryLines.push(
-        "- Use `platform_cortexAgent` to get a built-in primary orchestrator agent configuration.",
-      )
-      summaryLines.push(
-        "- cortex analyzes requests and routes them to specialized agents.",
-      )
-      summaryLines.push(
-        "- The agent dynamically includes a table of all discovered agents in its prompt.",
-      )
+## Agents
+- Detected ${agentCount} agents via client.app.agents()
+- Define agents in \`AGENTS.md\` or Markdown files under \`.opencode/agent/\` or \`~/.config/opencode/agent/\`.
 
-      return summaryLines.join("\n")
+## Skills
+- Detected ${skills.length} skills across project and global locations.
+- Project skills: \`.opencode/skill/<name>/SKILL.md\`
+- Project (Claude-compatible) skills: \`.claude/skills/<name>/SKILL.md\`
+- Global skills: \`~/.config/opencode/skill/<name>/SKILL.md\`
+- Global (Claude-compatible) skills: \`~/.claude/skills/<name>/SKILL.md\`
+
+## Tools
+- This plugin adds tools: \`platform_agents\`, \`platform_skills\`, \`platform_info\`, \`platform_createAgent\`, and \`platform_cortexAgent\`.
+
+## KERNEL-92//CORTEX Orchestrator Agent
+- Use \`platform_cortexAgent\` to get a built-in primary orchestrator agent configuration.
+- cortex analyzes requests and routes them to specialized agents.
+- The agent dynamically includes a table of all discovered agents in its prompt.`
+
+      return summary
     },
   })
 }
